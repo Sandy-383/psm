@@ -1,3 +1,5 @@
+
+#geometrical distribution
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.stats import geom
@@ -13,3 +15,15 @@ plt.ylabel('probability')
 plt.xticks(k)
 plt.grid(axis='y')
 plt.show()
+
+
+#The lifetime risk of developing cancer is 1/78. If x is  the number of people you ask until one says he/she has cancer
+#.if X~G(1/78).What is the propbability that we need to ask 10 people before one says he/she has cancer?
+
+
+
+import scipy.stats as stats
+p = 1 / 78
+k = 10
+probability = stats.geom.pmf(k, p)
+print(f"The probability of needing to ask exactly 10 people is: {probability:.6f}")
