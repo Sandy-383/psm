@@ -15,4 +15,4 @@ while birthday_probability(n) < 0.5:
 print(f"The minimum number of people required for at least a 50% chance of two people sharing a birthday is: {n}")
 
 #OUTPUT
-The minimum number of people required for at least a 50% chance of two people sharing a birthday is: 23
+#The minimum number of people required for at least a 50% chance of two people sharing a birthday is: 23
