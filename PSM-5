@@ -1,0 +1,18 @@
+#How many people are required so that any two people in the group have the same birthday with at least 50-50 chance?
+
+def birthday_probability(n, days_in_year=365):
+    prob_no_shared_birthday = 1.0
+    for i in range(n):
+        prob_no_shared_birthday *= (days_in_year - i) / days_in_year
+    
+    prob_shared_birthday = 1 - prob_no_shared_birthday
+    return prob_shared_birthday
+
+n = 1
+while birthday_probability(n) < 0.5:
+    n += 1
+
+print(f"The minimum number of people required for at least a 50% chance of two people sharing a birthday is: {n}")
+
+#OUTPUT
+The minimum number of people required for at least a 50% chance of two people sharing a birthday is: 23
