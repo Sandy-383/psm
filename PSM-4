@@ -1,0 +1,15 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import geom
+p=0.3
+k=np.arange(1,21)
+pmf=geom.pmf(k,p)
+for trial,prob in zip(k,pmf):
+    print(f'p(x={trial})={prob:.4f}')
+plt.bar(k,pmf,color='greenyellow')
+plt.title("geometric distribution pmf")
+plt.xlabel('number of trials')
+plt.ylabel('probability')
+plt.xticks(k)
+plt.grid(axis='y')
+plt.show()
