@@ -9,3 +9,13 @@
 # plt.xlabel("Value")
 # plt.ylabel("frequency")
 # plt.show()
+
+
+from scipy.stats import uniform
+
+a=5
+b=15
+p1=uniform.cdf(10,loc=a,scale=b-a)
+print(p1)
+print("mean: ",uniform.mean(loc=a,scale=b-a))
+print("Var: ",uniform.var(loc=a,scale=b-a))
