@@ -1,0 +1,14 @@
+mean_values = [5, 10, 15]
+std_deviation_values = [1, 2, 3]
+x_values = np.linspace(-10, 30, 1000)
+plt.figure(figsize=(12, 6))
+for mean, std_dev in zip(mean_values, std_deviation_values):
+pdf_values = norm.pdf(x_values, loc=mean, scale=std_dev)
+plt.plot(x_values, pdf_values, label=f'Mean={mean}, SD={std_dev}')
+plt.title('Normal Distributions with Varying Mean and Standard
+Deviation')
+plt.xlabel('Random Variable')
+plt.ylabel('Probability Density')
+plt.legend()
+plt.grid(True)
+plt.show()
