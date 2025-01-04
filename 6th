@@ -1,0 +1,11 @@
+ import numpy as np
+# import matplotlib.pyplot as plt
+# a,b,sample=5,15,10000
+# rv=np.random.uniform(a,b,sample)
+# print(np.mean(rv))
+# print(np.var(rv))
+# plt.hist(rv,bins=30,color="red",alpha=0.5)
+# plt.title("random variable")
+# plt.xlabel("Value")
+# plt.ylabel("frequency")
+# plt.show()
