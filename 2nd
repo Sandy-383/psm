@@ -1,0 +1,12 @@
+import scipy.stats as st
+from scipy.stats import binom
+import seaborn as sns
+n=20
+p=0.6
+p1=1-st.binom.cdf(15,n,p)
+p2=st.binom.pmf(8,n,p)
+print(p1)
+print(p2)
+data=binom.rvs(n=20,p=0.3,size=5000)
+graph=sns.displot(data,kde=False,color="blue",alpha=1)
+graph.set(xlabel="success",ylabel="frequency",title="histo of binom")
