@@ -1,11 +1,9 @@
 p=1
-n=30
-days=365
-for i in range(n):
-    av=days-i
-    p*=av/days
-    i+=1
-    # print(f"n={i+1},{av}/{days},p={p*100},1-p={(1-p)*100}")
-    if (round(p,1))==0.5 and p<=0.5:
+n=0
+while n!=366:
+    if (round(p,1)) ==0.5 and p<(0.5):
         break
-print(i)
+    n+=1
+    p*=(365-n+1)/365
+
+print(n)
