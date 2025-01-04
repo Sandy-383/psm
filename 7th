@@ -1,0 +1,11 @@
+from scipy.stats import expon
+import seaborn as sns
+data=expon.rvs(loc=2,scale=5,size=1000)
+graph=sns.displot(data,kde=False,color="black",alpha=1)
+graph.set(xlabel="Success",ylabel="Frequency")
+
+
+
+wait=15
+less=expon.cdf(10,scale=15)
+print(less)
