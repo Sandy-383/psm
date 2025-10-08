@@ -1,34 +1,29 @@
-# Demonstrate concatenation operation
-# Create sample DataFrames for demonstration
-
 import pandas as pd
 
-# Sample DataFrames
-data1 = {'Name': ['A', 'B', 'C'],
-         'Age': [25, 30, 35]}
-data2 = {'Name': ['D', 'E', 'F'],
-         'Age': [40, 45, 50]}
+# Sample DataFrame (you can replace this with your actual sales_df)
+sales_df = pd.DataFrame({
+    'Month': ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+    'Sales': [25000, 27000, 30000, 35000, 37000, 40000, 42000, 43000, 45000]
+})
 
-df1 = pd.DataFrame(data1)
-df2 = pd.DataFrame(data2)
+# Divide the DataFrame into quarters
+quarter1 = sales_df.iloc[:3].copy()   # First 3 months
+quarter2 = sales_df.iloc[3:6].copy()  # Next 3 months
+quarter3 = sales_df.iloc[6:].copy()   # Last 3 months
 
-print("DataFrame 1:")
-print(df1)
-print("\nDataFrame 2:")
-print(df2)
+print(f"\nQuarter-1:\n{quarter1}\n")
+print(f"Quarter-2:\n{quarter2}\n")
+print(f"Quarter-3:\n{quarter3}\n")
+
+# Add Quarter identifiers
+quarter1['Quarter'] = 'Q1'
+quarter2['Quarter'] = 'Q2'
+quarter3['Quarter'] = 'Q3'
 
 # Vertical concatenation (stacking rows)
-vertical_concat = pd.concat([df1, df2], axis=0)
-print("\nVertical Concatenation:")
-print(vertical_concat)
+vertical_concatenated = pd.concat([quarter1, quarter2, quarter3], axis=0)
 
-# Horizontal concatenation (adding columns)
-data3 = {'Salary': [50000, 60000, 70000]}
-data4 = {'Department': ['HR', 'IT', 'Finance']}
+print(f"\nVertical Concatenation:\n{vertical_concatenated}\n")
+print(f"Vertical Concatenation Shape: {vertical_concatenated.shape}")
 
-df3 = pd.DataFrame(data3)
-df4 = pd.DataFrame(data4)
-
-horizontal_concat = pd.concat([df3, df4], axis=1)
-print("\nHorizontal Concatenation:")
-print(horizontal_concat)
+print("\nImplications: Combines similar data from different time periods into one dataset for easier analysis.")
