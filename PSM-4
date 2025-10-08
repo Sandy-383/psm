@@ -1,32 +1,43 @@
+import pandas as pd
 
-#geometrical distribution
-import numpy as np
-import matplotlib.pyplot as plt
-from scipy.stats import geom
-p=0.3
-k=np.arange(1,21)
-pmf=geom.pmf(k,p)
-for trial,prob in zip(k,pmf):
-    print(f'p(x={trial})={prob:.4f}')
-plt.bar(k,pmf,color='greenyellow')
-plt.title("geometric distribution pmf")
-plt.xlabel('number of trials')
-plt.ylabel('probability')
-plt.xticks(k)
-plt.grid(axis='y')
-plt.show()
+# Sample data for demonstration
+sales_data = {
+    'OrderID': [1, 2, 3, 4, 5],
+    'Product': ['Laptop', 'Mouse', 'Keyboard', 'Monitor', 'Headphones'],
+    'Amount': [1200, 25, 75, 300, 100]
+}
+
+feedback_data = {
+    'OrderID': [3, 4, 5, 6, 7],
+    'Customer': ['John', 'Alice', 'David', 'Eva', 'Sam'],
+    'Feedback': ['Good', 'Excellent', 'Average', 'Poor', 'Good']
+}
+
+sales_df = pd.DataFrame(sales_data)
+feedback_df = pd.DataFrame(feedback_data)
+
+# Function to demonstrate different types of merges
+def demonstrate_merges(sales_df, feedback_df):
+    print("Inner Join: when you want only matching records from both tables\n")
+    inner_merged = pd.merge(sales_df, feedback_df, on='OrderID', how='inner')
+    print(f"Inner Join: {inner_merged.shape} rows\n{inner_merged}\n")
+
+    print("Left Join: when you want all records from the left table (sales_df)\n")
+    left_merged = pd.merge(sales_df, feedback_df, on='OrderID', how='left')
+    print(f"Left Join: {left_merged.shape} rows\n{left_merged}\n")
+
+    print("Right Join: when you want all records from the right table (feedback_df)\n")
+    right_merged = pd.merge(sales_df, feedback_df, on='OrderID', how='right')
+    print(f"Right Join: {right_merged.shape} rows\n{right_merged}\n")
+
+    print("Outer Join: all records from both tables\n")
+    outer_merged = pd.merge(sales_df, feedback_df, on='OrderID', how='outer')
+    print(f"Outer Join: {outer_merged.shape} rows\n{outer_merged}\n")
+
+    return inner_merged, left_merged, right_merged, outer_merged
 
 
-#The lifetime risk of developing cancer is 1/78. If x is  the number of people you ask until one says he/she has cancer
-#.if X~G(1/78).What is the propbability that we need to ask 10 people before one says he/she has cancer?
+# Call the function and store results
+inner_result, left_result, right_result, outer_result = demonstrate_merges(sales_df, feedback_df)
 
-
-
-import scipy.stats as stats
-p = 1 / 78
-k = 10
-probability = stats.geom.pmf(k, p)
-print(f"The probability of needing to ask exactly 10 people is: {probability:.6f}")
-
-#OUTPUT
-#The probability of needing to ask exactly 10 people is:0.0114
+print("Merge Operations Complete ✅")
